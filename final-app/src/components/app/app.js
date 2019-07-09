@@ -1,11 +1,24 @@
 import React from 'react';
+import { CoffeePage, ItemPage, MainPage, PleasurePage, ContactPage } from '../pages'; 
+import Footer from '../footer';
+
+
+import '../../css/style.css';
+
 
 const App = () => {
 
     return (
-        <div style={{color:'green'}}>
-            Hello!
-        </div>
+        <>
+            
+            <MainPage />
+            <CoffeePage />
+            <PleasurePage />
+            <ItemPage />
+            <ContactPage />
+
+            <Footer />
+        </>
     )
 }
 
