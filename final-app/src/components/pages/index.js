@@ -55,7 +55,7 @@ const routerConfig = [
         exact: true
     },
     {
-        path: '/coffee/:id',
+        path: '/:id',
         component: ({match}) => dynamicItem(match),
         exect: true
     }

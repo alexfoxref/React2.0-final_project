@@ -47,7 +47,7 @@ class CardPanel extends Component {
                                     cardItem={cardItem}
                                     funcName={funcName}
                                     onItemSelected={(itemId) => {
-                                        this.props.history.push(`/coffee/${itemId}`)
+                                        this.props.history.push(`/${itemId}`)
                                     }}
                                     />
                     })

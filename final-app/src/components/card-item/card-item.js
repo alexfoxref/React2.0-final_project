@@ -9,7 +9,7 @@ const CardItem = ({cardItem, funcName, onItemSelected, id}) => {
         <div 
             className={`${cardClass}__item`}
             onClick={() => {
-                if (funcName === 'getCoffeeItems') {
+                if (funcName !== 'getGoodsItems') {
                     onItemSelected(id)
                 }
             }}>

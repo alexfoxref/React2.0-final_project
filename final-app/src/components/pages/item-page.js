@@ -12,14 +12,24 @@ import AppHeader from '../app-header';
 class ItemPage extends Component {
 
     componentDidMount() {
-        const {CoffeeService, cardsLoaded, cardsRequested, cardsError, cards} = this.props;
+        const {CoffeeService, cardsLoaded, cardsRequested, cardsError, cards, selectedItem} = this.props;
+
+        const pageName = selectedItem.replace(/\d/g, '');
+        const funcName = (pageName === 'coffee') ? 'getCoffeeItems' : 'getBestsellersItems';
+
 
         if (cards.length === 0) {
             cardsRequested(true);
 
-            CoffeeService.getCoffeeItems()
-                .then(res => cardsLoaded(res))
-                .catch(err => cardsError(err));
+            for (let key in CoffeeService) {
+                if (key === funcName) {
+                    CoffeeService[key]()
+                        .then(res => cardsLoaded(res))
+                        .catch(err => cardsError(err));
+                    break;
+                }
+            }
+
         } else {
             cardsLoaded(cards)
         }
