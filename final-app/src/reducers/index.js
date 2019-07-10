@@ -2,7 +2,8 @@ const initialState = {
     cards: [],
     loading: true,
     errorMessage: null,
-    checkedDescr: false
+    checkedDescr: false,
+    success: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,7 +33,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 checkedDescr: !state.checkedDescr
             }
-
+        case 'TOGGLE_SUCCESS':
+            return {
+                ...state,
+                success: payload
+            }
         default:
             return state
     }

@@ -30,4 +30,19 @@ export default class CoffeeService {
 
         return res;
     }
+
+    postData = async (url, data) => {
+        await fetch(`${this._apiBase}${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    postContacts = async (data) => {
+        await this.postData('/contacts', data)
+    }
+    
 }

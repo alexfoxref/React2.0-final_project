@@ -3,11 +3,18 @@ import AppHeader from '../app-header';
 import ContactForm from '../contact-form';
 import beansLogoDark from '../../logo/Beans_logo_dark.svg';
 import { Container, Row, Col } from 'reactstrap';
-// import Success from '../success';
+import Success from '../success';
+import {connect} from 'react-redux';
+import {toggleSuccess} from '../../actions';
 
 
 
-const ContactPage = () => {
+
+const ContactPage = ({success, toggleSuccess}) => {
+
+    const contactForm = !success ? <ContactForm /> : null;
+    const successForm = success ? <Success onReturn={() => toggleSuccess(false)}/> : null;
+
     return (
         <>
             <AppHeader pageName="contact" />
@@ -16,9 +23,9 @@ const ContactPage = () => {
                     <Col lg={{ size: 6, offset: 3 }}>
                         <div className="title">Tell us about your tastes</div>
                         <img className="beanslogo" src={beansLogoDark} alt="Beans logo"></img>
-                        <ContactForm />
+                        {contactForm}
                     </Col>
-                    {/* <Success /> */}
+                    {successForm}
                 </Row>
             </Container>
 
@@ -26,4 +33,12 @@ const ContactPage = () => {
     )
 };
 
-export default ContactPage;
+const mapStateToProps = ({success}) => {
+    return {success}
+};
+
+const mapDispatchToProps = {
+    toggleSuccess
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactPage);
