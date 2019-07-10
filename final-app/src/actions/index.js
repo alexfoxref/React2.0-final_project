@@ -27,3 +27,9 @@ export const cardsError = (err) => {
         errorMessage: num
     }
 }
+
+export const toggleDescr = () => {
+    return {
+        type: 'TOGGLE_DESCR',
+    }
+}

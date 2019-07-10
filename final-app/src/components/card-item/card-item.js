@@ -18,7 +18,7 @@ const CardItem = ({cardItem, funcName, onItemSelected, id}) => {
                     {name}
                 </div>
                 {country ? <div className="shop__item-country">{country}</div> : null}
-                <div className={`${cardClass}__item-price`}>{price}$</div>
+                <div className={`${cardClass}__item-price`}>{price}</div>
         </div>
     )
 };

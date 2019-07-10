@@ -1,4 +1,6 @@
 import React from 'react';
+import img from './error.png';
+import './error.css';
 
 const Error = ({errorMessage}) => {
     let mess = `Unexpexted Error. Something goes wrong.`;
@@ -20,10 +22,9 @@ const Error = ({errorMessage}) => {
             break;
     }
 
-    return  <div 
-                style={{width: '100%', height: '100%', color: 'red'}} 
-                className="error">
-                    {mess}
+    return  <div className="error">
+                <img src={img} width="100" height="100" alt="error"></img>
+                <span>{mess}</span>
             </div>
 }
 

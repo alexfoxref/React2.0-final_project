@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import WithCoffeeService from '../hoc';
 import {connect} from 'react-redux';
-import {cardsLoaded, cardsRequested, cardsError} from '../../actions';
+import {cardsLoaded, cardsRequested, cardsError, toggleDescr} from '../../actions';
 import { View } from '../card-panel';
 
 import { Container, Row, Col } from 'reactstrap';
@@ -36,7 +36,7 @@ class ItemPage extends Component {
     }
 
     itemPage = () => {
-        const {selectedItem, cards} = this.props;
+        const {selectedItem, cards, toggleDescr, checkedDescr} = this.props;
         const index = +selectedItem.replace(/[^\d]/g, '') - 1;
 
         let card = {
@@ -52,6 +52,11 @@ class ItemPage extends Component {
         }
         const {name, country, url, price, description} = card;
 
+        let descr = '';
+        if (description) {
+            descr = (description.trim().length > 200 && !checkedDescr) ? `${description.trim().slice(0, 201)}...` : description.trim();
+        }
+
         return (
             <section className="shop">
                 <Container>
@@ -62,17 +67,19 @@ class ItemPage extends Component {
                         <Col lg="4">
                             <div className="title">About it</div>
                             <img className="beanslogo" src={beansLogoDark} alt="Beans logo"></img>
-                            <div className="shop__point">
+                            <div className="shop__point shop-country">
                                 <span>Country:</span>
-                                {country}
+                                {' '}{country}
                             </div>
-                            <div className="shop__point">
-                                <span>Description:</span>
-                                {description}
+                            <div 
+                                className="shop__point shop-description"
+                                onClick={toggleDescr}>
+                                    <span>Description:</span>
+                                    {' '}{descr}
                             </div>
-                            <div className="shop__point">
+                            <div className="shop__point shop-price">
                                 <span>Price:</span>
-                                <span className="shop__point-price">{price}$</span>
+                                <span className="shop__point-price">{' '}{price}</span>
                             </div>
                         </Col>
                     </Row>
@@ -101,18 +108,20 @@ class ItemPage extends Component {
 
 
 
-const mapStateToProps = ({cards, loading, errorMessage}) => {
+const mapStateToProps = ({cards, loading, errorMessage, checkedDescr}) => {
     return {
         cards,
         loading,
-        errorMessage
+        errorMessage,
+        checkedDescr
     }
 };
 
 const mapDispatchToProps = {
     cardsLoaded, 
     cardsRequested, 
-    cardsError
+    cardsError,
+    toggleDescr
 }
 
 export default WithCoffeeService()(connect(mapStateToProps, mapDispatchToProps)(ItemPage));

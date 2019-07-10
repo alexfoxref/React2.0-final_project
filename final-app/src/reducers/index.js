@@ -1,7 +1,8 @@
 const initialState = {
     cards: [],
     loading: true,
-    errorMessage: null
+    errorMessage: null,
+    checkedDescr: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +27,11 @@ const reducer = (state = initialState, action) => {
                 errorMessage
             };
         
+        case 'TOGGLE_DESCR':
+            return {
+                ...state,
+                checkedDescr: !state.checkedDescr
+            }
 
         default:
             return state
