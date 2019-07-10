@@ -1,5 +1,5 @@
 import React from 'react';
-import { CoffeePage, ItemPage, MainPage, PleasurePage, ContactPage } from '../pages'; 
+import Pages from '../pages'; 
 import Footer from '../footer';
 
 
@@ -10,13 +10,7 @@ const App = () => {
 
     return (
         <>
-            
-            <MainPage />
-            <CoffeePage />
-            <PleasurePage />
-            <ItemPage />
-            <ContactPage />
-
+            <Pages />
             <Footer />
         </>
     )

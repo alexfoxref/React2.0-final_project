@@ -6,6 +6,7 @@ import coffeeCup from '../../img/coffee_cup.jpg';
 import coffeeGirl from '../../img/coffee_girl.jpg';
 import beansLogoDark from '../../logo/Beans_logo_dark.svg';
 import AppHeader from '../app-header';
+import CardPanel from '../card-panel';
 
 const Filters = () => {
     return (
@@ -31,7 +32,6 @@ const Filters = () => {
         </Row>
     )
 };
-// title, img, text, filters, urldb
 
 const BlankPage = ({pageName}) => {
 
@@ -47,7 +47,8 @@ const BlankPage = ({pageName}) => {
                     met spot shy want. Children me laughing we prospect answered followed. At it went<br/>
                     is song that held help face.
                 </div>,
-        filters : null
+        filters : null,
+        funcName: 'getCoffeeItems'
     };
     let page = initialPage;
 
@@ -64,14 +65,15 @@ const BlankPage = ({pageName}) => {
             page = {
                 ...initialPage,
                 image : coffeeCup,
-                title : 'About our goods'
+                title : 'About our goods',
+                funcName: 'getGoodsItems'
             };
             break;
         default:
             break;
     };
 
-    const {image, title, text, filters} = page;
+    const {image, title, text, filters, funcName} = page;
 
     return (
         <>
@@ -98,56 +100,8 @@ const BlankPage = ({pageName}) => {
 
                     <Row>
                         <Col lg={{ size: 10, offset: 1 }}>
-                            <div className="shop__wrapper">
-                                <div className="shop__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        Solimo Coffee Beans 2kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">10.73$</div>
-                                </div>
-                                <div className="shop__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        Presto Coffee Beans 1kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">15.99$</div>
-                                </div>
-                                <div className="shop__item">
-                                    <img src="https://hhp-blog.s3.amazonaws.com/2018/07/iStock-673468996.jpg" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        AROMISTICO Coffee 1kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">6.99$</div>
-                                </div>
-                                <div className="shop__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        Solimo Coffee Beans 2kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">10.73$</div>
-                                </div>
-                                <div className="shop__item">
-                                    <img src="https://i0.wp.com/www.healthline.com/hlcmsresource/images/AN_images/AN275-cup-of-coffee-732x549-Thumb.jpg?w=756" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        Solimo Coffee Beans 2kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">10.73$</div>
-                                </div>
-                                <div className="shop__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="shop__item-title">
-                                        Solimo Coffee Beans 2kg
-                                    </div>
-                                    <div className="shop__item-country">Brazil</div>
-                                    <div className="shop__item-price">10.73$</div>
-                                </div>
-                            </div>
+                            <CardPanel 
+                                funcName={funcName}/>
                         </Col>
                     </Row>
                 </Container>

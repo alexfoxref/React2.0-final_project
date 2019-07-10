@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { Formik } from "formik";
 import BasicFormSchema from "../basic-form-schema";
 import InputMask from 'react-input-mask';
@@ -11,6 +11,9 @@ const PhoneInput = (props) => {
 };
 
 const ContactForm = () => {
+
+    let hidden = 'none';
+
     return (
         <Formik
             initialValues={{ 
@@ -25,6 +28,7 @@ const ContactForm = () => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 500);
+                    hidden = 'none';
                 }
             }>
                 {props => {
@@ -89,7 +93,7 @@ const ContactForm = () => {
                                         placeholder="+7 (___) ___ __ __"
                                         type="text"
                                         value={values.phone}
-                                        onChange={(event) => {handleChange(event)}}
+                                        onChange={handleChange}
                                         onBlur={handleBlur}
                                         className={errors.phone && touched.phone ? 'text-input text-input__error' : 'text-input'} />
                                     {errors.phone && touched.phone && (
@@ -115,9 +119,22 @@ const ContactForm = () => {
                                     )}
                                 </FormGroup>
                             
-                                <button className="form__btn" type="submit" disabled={isSubmitting}>
-                                    Send us
+                                <button 
+                                    onClick={() => {
+                                        const {name, email, text} = touched;
+                                        if ((name && errors.name) || (email && errors.email) || (text && errors.text) || !name || !email || !text) {
+                                            hidden = 'block';
+                                        }
+                                    }} 
+                                    className="form__btn" 
+                                    type="submit" 
+                                    disabled={isSubmitting}>
+                                        Send us
                                 </button>
+
+                                <div className="form__error-message" style={{display:`${hidden}`}}>
+                                    Please fill in all required fields
+                                </div>
                         </Form>
                     );
                 }}

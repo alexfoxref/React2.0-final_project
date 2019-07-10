@@ -1,7 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import {Link} from 'react-router-dom';
+
+
+import NavBar from '../nav-bar';
 import beansLogo from '../../logo/Beans_logo.svg';
-import logo from '../../logo/Logo.svg';
 import previewBanner from '../../img/Main_bg.jpg';
 import coffeeBanner from '../../img/Coffee_bg.jpg';
 import pleasureBanner from '../../img/Pleasure_bg.jpg';
@@ -16,7 +19,7 @@ const MainBanner = ({title}) => {
                 <img className="beanslogo" src={beansLogo} alt="Beans logo"></img>
                 <div className="preview__subtitle">We makes every day full of energy and taste</div>
                 <div className="preview__subtitle">Want to try our beans?</div>
-                <a href="#" className="preview__btn">More</a>
+                <Link to="/coffee/" className="preview__btn">More</Link>
             </Col>
         </Row>
     )
@@ -74,22 +77,7 @@ const AppHeader = ({pageName}) => {
                 <Row>
                     <Col lg='6'>
                         <header>
-                            <ul className="header">
-                                <li className="header__item">
-                                    <a href="#">
-                                        <img src={logo} alt="logo"></img>
-                                    </a>
-                                </li>
-                                <li className="header__item">
-                                    <a href="#">Our coffee</a>
-                                </li>
-                                <li className="header__item">
-                                    <a href="#">For your pleasure</a>
-                                </li>
-                                <li className="header__item">
-                                    <a href="#">Contact us</a>
-                                </li>
-                            </ul>
+                            <NavBar place="header" />
                         </header>
                     </Col>
                 </Row>

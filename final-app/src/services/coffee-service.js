@@ -13,8 +13,20 @@ export default class CoffeeService {
         return res.json();
     }
 
-    getMenuItems = async () => {
-        const res = await this.getResource('/menu');
+    getBestsellersItems = async () => {
+        const res = await this.getResource('/bestsellers'); 
+
+        return res;
+    }
+
+    getCoffeeItems = async () => {
+        const res = await this.getResource('/coffee'); 
+
+        return res;
+    }
+
+    getGoodsItems = async () => {
+        const res = await this.getResource('/goods'); 
 
         return res;
     }

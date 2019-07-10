@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CardPanel from '../card-panel';
 
 import { Container, Row, Col } from 'reactstrap';
 import beansLogoDark from '../../logo/Beans_logo_dark.svg';
@@ -40,29 +40,8 @@ const MainPage = () => {
                     <div className="title">Our best</div>
                     <Row>
                         <Col lg={{ size: 10, offset: 1 }}>
-                            <div className="best__wrapper">
-                                <div className="best__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="best__item-title">
-                                        Solimo Coffee Beans 2kg
-                                    </div>
-                                    <div className="best__item-price">10.73$</div>
-                                </div>
-                                <div className="best__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="best__item-title">
-                                        Presto Coffee Beans 1kg
-                                    </div>
-                                    <div className="best__item-price">15.99$</div>
-                                </div>
-                                <div className="best__item">
-                                    <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"></img>
-                                    <div className="best__item-title">
-                                        AROMISTICO Coffee 1kg
-                                    </div>
-                                    <div className="best__item-price">6.99$</div>
-                                </div>
-                            </div>
+                            <CardPanel 
+                                funcName="getBestsellersItems"/>
                         </Col>
                     </Row>
                 </Container>

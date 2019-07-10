@@ -7,7 +7,7 @@ const WithCoffeeService = () => (Wrapped) => {
             <CoffeeServiceContext.Consumer>
                 {
                     (CoffeeService) => {
-                        return <Wrapped {...props} RestoService={CoffeeService}/>
+                        return <Wrapped {...props} CoffeeService={CoffeeService}/>
                     }
                 }
             </CoffeeServiceContext.Consumer>

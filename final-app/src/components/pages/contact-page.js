@@ -3,7 +3,7 @@ import AppHeader from '../app-header';
 import ContactForm from '../contact-form';
 import beansLogoDark from '../../logo/Beans_logo_dark.svg';
 import { Container, Row, Col } from 'reactstrap';
-import Success from '../success';
+// import Success from '../success';
 
 
 
@@ -18,7 +18,7 @@ const ContactPage = () => {
                         <img className="beanslogo" src={beansLogoDark} alt="Beans logo"></img>
                         <ContactForm />
                     </Col>
-                    <Success />
+                    {/* <Success /> */}
                 </Row>
             </Container>
 
