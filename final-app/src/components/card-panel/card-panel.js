@@ -12,7 +12,7 @@ class CardPanel extends Component {
 
     componentDidMount() {
         const {CoffeeService, cardsLoaded, cardsRequested, cardsError, funcName} = this.props;
-
+        
         cardsRequested(true);
 
         for (let key in CoffeeService) {
@@ -35,7 +35,8 @@ class CardPanel extends Component {
 
     cardsList = () => {
         const {cards, funcName, search, filterCountry} = this.props;
-        const term = new RegExp(search, 'ig');
+
+        const term = new RegExp(search.replace(/[^\w]/ig, ''), 'i');
         const wrapperClass = (funcName === 'getBestsellersItems') ? 'best' : 'shop';
         let id = 1;
 
@@ -49,6 +50,7 @@ class CardPanel extends Component {
 
                             if (term.test(cardItem.name) && 
                                 (cardItem.country === filterCountry || filterCountry === 'All')) {
+                                    
                                 return  <CardItem 
                                         key={cardId}
                                         id={cardId}
@@ -60,7 +62,7 @@ class CardPanel extends Component {
                                         }}
                                         />
                             } else {
-                                return ''
+                                return null
                             }
                             
                         })
