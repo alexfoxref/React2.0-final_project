@@ -84,32 +84,18 @@
   ],
   "contacts": [
     {
-      "name": "asdsa",
-      "email": "asd@asd.asd",
-      "phone": "+7 (235) 235      ",
+      "name": "asda",
+      "email": "asdas@asd.sd",
+      "phone": "",
       "text": "asd",
       "id": 1
     },
     {
-      "name": "asdsa",
-      "email": "asdas@sd.asd",
-      "phone": "+7 (235) 515 31   ",
-      "text": "dasdasdasd",
-      "id": 2
-    },
-    {
-      "name": "asds",
-      "email": "asda@asd.asd",
-      "phone": "+7 (235) 151 3    ",
+      "name": "asd",
+      "email": "asda@das.asd",
+      "phone": "+7 (132) 431      ",
       "text": "asdasd",
-      "id": 3
-    },
-    {
-      "name": "asdasd",
-      "email": "ass@dsa.asd",
-      "phone": "+7 (351) 252 34 23",
-      "text": "dsfsdf",
-      "id": 4
+      "id": 2
     }
   ]
 }

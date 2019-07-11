@@ -17,6 +17,8 @@ class ContactPage extends Component {
         cardsRequested(false);
     }
 
+    
+
     content = () => {
         const {success, toggleSuccess} = this.props;
 
@@ -37,6 +39,7 @@ class ContactPage extends Component {
 
     render() {
         const {loading, errorMessage} = this.props;
+        console.log(errorMessage)
 
         return (
             <>

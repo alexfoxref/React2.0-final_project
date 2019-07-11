@@ -37,10 +37,7 @@ export const postContacts = (data, CoffeeService) => {
         dispatch(cardsRequested(true));
 
         CoffeeService.postContacts(data)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Could not fetch, received ${res.status}`)
-                }
+            .then(() => {
                 dispatch(cardsRequested(false));
             })
             .catch(err => dispatch(cardsError(err)));
