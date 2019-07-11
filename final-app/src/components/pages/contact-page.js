@@ -20,7 +20,6 @@ class ContactPage extends Component {
     content = () => {
         const {success, toggleSuccess} = this.props;
 
-        console.log(success);
         const contactForm = !success ? <ContactForm /> : null;
         const successForm = success ? <Success onReturn={() => toggleSuccess(false)}/> : null;
 

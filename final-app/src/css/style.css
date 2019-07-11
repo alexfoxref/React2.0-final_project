@@ -789,10 +789,10 @@ footer {
 
 .no-match-page {
     position: absolute;
-    top: 0;
+    top: 220px;
     left: 0;
     width: 100vw;
-	height: 100vh;
+	height: 100%;
 }
 
 .no-match-page button {

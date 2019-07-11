@@ -29,6 +29,7 @@ const coffeeItem = (id) => {
 
 const dynamicItem = (match) => {
     const {id} = match.params;
+    console.log(id)
 
     return coffeeItem(id)
 };
@@ -55,7 +56,12 @@ const routerConfig = [
         exact: true
     },
     {
-        path: '/:id',
+        path: '/coffee/:id',
+        component: ({match}) => dynamicItem(match),
+        exect: true
+    },
+    {
+        path: '/bestsellers/:id',
         component: ({match}) => dynamicItem(match),
         exect: true
     }
