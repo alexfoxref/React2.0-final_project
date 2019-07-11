@@ -13,6 +13,7 @@ export const cardsRequested = (bool) => {
 }
 
 export const cardsError = (err) => {
+    console.log(err);
     return {
         type: 'CARDS_ERROR',
         errorMessage: err
