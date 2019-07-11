@@ -13,10 +13,9 @@ export const cardsRequested = (bool) => {
 }
 
 export const cardsError = (err) => {
-    const num = `${err}`.replace(/[^(\d\d\d)]/g, '');
     return {
         type: 'CARDS_ERROR',
-        errorMessage: num
+        errorMessage: err
     }
 }
 

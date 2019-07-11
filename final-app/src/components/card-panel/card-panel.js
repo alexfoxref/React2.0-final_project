@@ -16,7 +16,7 @@ class CardPanel extends Component {
         cardsRequested(true);
 
         for (let key in CoffeeService) {
-            if (key === funcName) {
+            if (key === funcName) { 
                 CoffeeService[key]()
                     .then(res => cardsLoaded(res))
                     .catch(err => cardsError(err));
@@ -50,7 +50,7 @@ class CardPanel extends Component {
 
                             if (term.test(cardItem.name) && 
                                 (cardItem.country === filterCountry || filterCountry === 'All')) {
-                                    
+
                                 return  <CardItem 
                                         key={cardId}
                                         id={cardId}

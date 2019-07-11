@@ -3,9 +3,11 @@ import img from './error.png';
 import './error.css';
 
 const Error = ({errorMessage}) => {
+    const num = `${errorMessage}`.replace(/[^(\d\d\d)]/g, '');
+
     let mess = `Unexpexted Error. Something goes wrong.`;
 
-    switch (errorMessage) {
+    switch (num) {
         case '404':
             mess = `Error ${errorMessage}. The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.`;
             break;
