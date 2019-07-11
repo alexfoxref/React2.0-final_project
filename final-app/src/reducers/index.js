@@ -34,23 +34,23 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 checkedDescr: !state.checkedDescr
-            }
+            };
         case 'TOGGLE_SUCCESS':
             return {
                 ...state,
                 success: payload
-            }
+            };
 
         case 'SEARCH_CARD':
             return {
                 ...state,
                 search: payload
-            }
+            };
         case 'FILTER_CARDS':
             return {
                 ...state,
                 filterCountry: payload
-            }
+            };
         default:
             return state
     }

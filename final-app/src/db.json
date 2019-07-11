@@ -83,6 +83,19 @@
     }
   ],
   "contacts": [
-    
+    {
+      "name": "asdsa",
+      "email": "asd@asd.asd",
+      "phone": "+7 (235) 235      ",
+      "text": "asd",
+      "id": 1
+    },
+    {
+      "name": "asdsa",
+      "email": "asdas@sd.asd",
+      "phone": "+7 (235) 515 31   ",
+      "text": "dasdasdasd",
+      "id": 2
+    }
   ]
 }
