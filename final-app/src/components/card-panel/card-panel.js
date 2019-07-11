@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import WithCoffeeService from '../hoc';
 import {connect} from 'react-redux';
-import {cardsLoaded, cardsRequested, cardsError} from '../../actions';
+import {cardsLoaded, cardsRequested, cardsError, searchCard, filterSelect} from '../../actions';
 import CardItem from '../card-item';
 import Spinner from '../spinner';
 import Error from '../error';
@@ -26,31 +26,43 @@ class CardPanel extends Component {
     }
 
     componentWillUnmount() {
-        this.props.cardsLoaded([])
+        const {cardsLoaded, searchCard, filterSelect} = this.props;
+
+        cardsLoaded([]);
+        searchCard('');
+        filterSelect('All');
     }
 
     cardsList = () => {
-        const {cards, funcName} = this.props;
+        const {cards, funcName, search, filterCountry} = this.props;
+        const term = new RegExp(search, 'ig');
         const wrapperClass = (funcName === 'getBestsellersItems') ? 'best' : 'shop';
         let id = 1;
 
         return (
             <ul className={`${wrapperClass}__wrapper`}>
                 {
-                    cards.map(cardItem => {
+                    cards
+                        .map(cardItem => {
 
-                        const cardId = `${funcName.slice(3, -5).toLowerCase()}${id++}`;
+                            const cardId = `${funcName.slice(3, -5).toLowerCase()}${id++}`;
 
-                        return  <CardItem 
-                                    key={cardId}
-                                    id={cardId}
-                                    cardItem={cardItem}
-                                    funcName={funcName}
-                                    onItemSelected={(itemId) => {
-                                        this.props.history.push(`/${itemId}`)
-                                    }}
-                                    />
-                    })
+                            if (term.test(cardItem.name) && 
+                                (cardItem.country === filterCountry || filterCountry === 'All')) {
+                                return  <CardItem 
+                                        key={cardId}
+                                        id={cardId}
+                                        cardItem={cardItem}
+                                        funcName={funcName}
+                                        onItemSelected={(itemId) => {
+                                            this.props.history.push(`/${itemId}`)
+                                        }}
+                                        />
+                            } else {
+                                return ''
+                            }
+                            
+                        })
                 }
             </ul>
         )
@@ -82,19 +94,23 @@ export const View = ({success, loading, error}) => {
 }
 
 const mapStateToProps = (state) => {
-    const {cards, loading, errorMessage} = state;
+    const {cards, loading, errorMessage, search, filterCountry} = state;
 
     return {
         cards,
         loading,
         errorMessage,
+        search,
+        filterCountry
     }
 };
 
 const mapDispatchToProps = {
     cardsLoaded,
     cardsRequested,
-    cardsError
+    cardsError,
+    searchCard,
+    filterSelect
 };
 
 export default withRouter(WithCoffeeService()(connect(mapStateToProps, mapDispatchToProps)(CardPanel)));

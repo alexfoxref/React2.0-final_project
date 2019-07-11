@@ -7,28 +7,14 @@ import coffeeGirl from '../../img/coffee_girl.jpg';
 import beansLogoDark from '../../logo/Beans_logo_dark.svg';
 import AppHeader from '../app-header';
 import CardPanel from '../card-panel';
+import SearchPanel from '../search-panel';
+import FilterPanel from '../filter-panel';
 
 const Filters = () => {
     return (
         <Row>
-            <Col lg={{ size: 4, offset: 2 }}>
-                <form action="#" className="shop__search">
-                    <label className="shop__search-label" htmlFor="filter">Looking for</label>
-                    <input id="filter" type="text" placeholder="start typing here..." className="shop__search-input"></input>
-                </form>
-            </Col>
-            <Col lg='4'>
-                <div className="shop__filter">
-                    <div className="shop__filter-label">
-                        Or filter
-                    </div>
-                    <div className="shop__filter-group">
-                        <button className="shop__filter-btn">Brazil</button>
-                        <button className="shop__filter-btn">Kenya</button>
-                        <button className="shop__filter-btn">Columbia</button>
-                    </div>
-                </div>
-            </Col>
+            <SearchPanel />
+            <FilterPanel />
         </Row>
     )
 };

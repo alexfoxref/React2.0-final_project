@@ -33,7 +33,6 @@ export const toggleSuccess = (bool) => {
     }
 }
 
-
 export const postContacts = (data, CoffeeService) => {
     return (dispatch) => {
         dispatch(cardsRequested(true));
@@ -46,5 +45,19 @@ export const postContacts = (data, CoffeeService) => {
                 dispatch(cardsRequested(false));
             })
             .catch(err => dispatch(cardsError(err)));
+    }
+}
+
+export const searchCard = (term) => {
+    return {
+        type: 'SEARCH_CARD',
+        payload: term
+    }
+}
+
+export const filterSelect = (name) => {
+    return {
+        type: 'FILTER_CARDS',
+        payload: name
     }
 }

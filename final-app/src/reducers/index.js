@@ -3,7 +3,9 @@ const initialState = {
     loading: true,
     errorMessage: null,
     checkedDescr: false,
-    success: false
+    success: false,
+    search: '',
+    filterCountry: 'All'
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +39,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 success: payload
+            }
+
+        case 'SEARCH_CARD':
+            return {
+                ...state,
+                search: payload
+            }
+        case 'FILTER_CARDS':
+            return {
+                ...state,
+                filterCountry: payload
             }
         default:
             return state
